@@ -20,17 +20,20 @@
         <div class="l-control"></div>
     </div>
     <script>
-        navigator.mediaDevices.getUserMedia({video:true})
-            .then(function (mediaStream) {
-                //获取video
-                var video = document.getElementById("video");
-                //输出到video
-                video.srcObject = mediaStream;
-                //视频流加载成功后播放
-                video.onloadedmetadata = function () {
-                    video.play(); //播放
-                };
-            });
+       navigator.mediaDevices.getUserMedia({video:true})
+            .then(function (mediaStream) {
+                //获取video
+                let video = document.getElementById("video");
+                //输出到video
+                video.srcObject = mediaStream;
+                //视频流加载成功后播放
+                video.onloadedmetadata = function () {
+                    video.play(); //播放
+                };
+            }).catch(function (err) {
+                let p = document.getElementById('p');
+                p.innerHTML = err.name + ": " + err.message;
+            });
     </script>
 </body>
 
